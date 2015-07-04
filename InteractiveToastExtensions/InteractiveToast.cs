@@ -8,6 +8,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Windows.Data.Xml.Dom;
+using Windows.UI.Notifications;
 
 namespace InteractiveToastExtensions
 {
@@ -75,7 +77,7 @@ namespace InteractiveToastExtensions
         /// Gets the XML.
         /// </summary>
         /// <returns>string representation of xml</returns>
-        public string GetXml()
+        internal string GetXml()
         {
             var sb = new StringBuilder("<toast");
 
@@ -124,6 +126,15 @@ namespace InteractiveToastExtensions
 
             sb.AppendLine("</toast>");
             return sb.ToString();
+        }
+
+        public ToastNotification GetNotification()
+        {
+            var doc = new XmlDocument();
+            var xml = GetXml();
+            doc.LoadXml(xml);
+
+            return new ToastNotification(doc);
         }
     }
 
@@ -185,14 +196,14 @@ namespace InteractiveToastExtensions
             _items.Remove(text);
         }
 
-        public void AddImage(Image image)
+        public void AddImage(VisualImage visualImage)
         {
-            _items.Add(image);
+            _items.Add(visualImage);
         }
 
-        public void RemoveImage(Image image)
+        public void RemoveImage(VisualImage visualImage)
         {
-            _items.Remove(image);
+            _items.Remove(visualImage);
         }
 
         internal string GetXml()
@@ -258,7 +269,7 @@ namespace InteractiveToastExtensions
         }
     }
 
-    public class Image : BindingBase
+    public class VisualImage : BindingBase
     {
         public string Source { get; set; }
         public string Alt { get; set; }
@@ -278,7 +289,7 @@ namespace InteractiveToastExtensions
         /// </summary>
         public bool? AddImageQuery { get; set; }
 
-        public Image(string source)
+        public VisualImage(string source)
         {
             Source = source;
         }
@@ -383,7 +394,7 @@ namespace InteractiveToastExtensions
         }
     }
 
-    public class Action : ActionItem
+    public class ToastAction : ActionItem
     {
         public string Content { get; set; }
         public string Arguments { get; set; }
@@ -398,7 +409,7 @@ namespace InteractiveToastExtensions
         /// </summary>
         public string InputId { get; set; }
 
-        public Action(string content, string arguments)
+        public ToastAction(string content, string arguments)
         {
             Content = content;
             Arguments = arguments;
@@ -435,11 +446,11 @@ namespace InteractiveToastExtensions
         internal abstract string GetXml();
     }
 
-    public class Input : ActionItem
+    public class ToastInput : ActionItem
     {
         private readonly List<Selection> _items = new List<Selection>(); 
         public string Id { get; set; }
-        public InputType InputType { get; set; }
+        public ToastInputType ToastInputType { get; set; }
         public string Title { get; set; }
         
         /// <summary>
@@ -455,10 +466,10 @@ namespace InteractiveToastExtensions
         /// </summary>
         public string DefaultInput { get; set; }
 
-        public Input(string id, InputType inputType)
+        public ToastInput(string id, ToastInputType toastInputType)
         {
             Id = id;
-            InputType = inputType;
+            ToastInputType = toastInputType;
         }
 
         public void AddSelection(string id, string content)
@@ -470,14 +481,14 @@ namespace InteractiveToastExtensions
         {
             var sb = new StringBuilder("<input");
 
-            sb.Append($" id=\"{Id}\" type=\"{InputType}\"");
+            sb.Append($" id=\"{Id}\" type=\"{ToastInputType.ToString().ToLower()}\"");
 
             if (!string.IsNullOrEmpty(Title))
             {
                 sb.Append($" title=\"{Title}\"");
             }
 
-            if (!string.IsNullOrEmpty(PlaceholderContent) && InputType == InputType.Text)
+            if (!string.IsNullOrEmpty(PlaceholderContent) && ToastInputType == ToastInputType.Text)
             {
                 sb.Append($" placeHolderContent=\"{PlaceholderContent}\"");
             }
@@ -487,12 +498,13 @@ namespace InteractiveToastExtensions
                 sb.Append($" defaultInput=\"{DefaultInput}\"");
             }
 
-            switch (InputType)
+            switch (ToastInputType)
             {
-                case InputType.Text:
+                case ToastInputType.Text:
                     sb.Append(" />");
                     break;
-                case InputType.Selection:
+                case ToastInputType.Selection:
+                    sb.Append(">");
                     foreach (var item in _items)
                     {
                         sb.AppendLine(item.GetXml());
@@ -506,7 +518,7 @@ namespace InteractiveToastExtensions
         }
     }
 
-    public enum InputType
+    public enum ToastInputType
     {
         /// <summary>
         /// This will display an input textbox
