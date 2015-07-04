@@ -23,19 +23,31 @@ namespace InteractiveToastExtensionsSample
             var visual = new Visual();
             visual.AddText(new Text("Spicy Heaven"));
             visual.AddText(new Text("When do you plan to come in tomorrow?"));
-            visual.AddImage(new VisualImage("ms-appx:///Assets/Deadpool.png") { ImagePlacement = ImagePlacement.AppLogoOverride });
+            visual.AddImage(new VisualImage("ms-appx:///Assets/Deadpool.png")
+            {
+                ImagePlacement = ImagePlacement.AppLogoOverride
+            });
 
             toast.SetVisual(visual);
 
-            var input = new ToastInput("time", ToastInputType.Selection) { DefaultInput = "2" };
+            var input = new ToastInput("time", ToastInputType.Selection)
+            {
+                DefaultInput = "2"
+            };
             input.AddSelection("1", "Breakfast");
             input.AddSelection("2", "Lunch");
             input.AddSelection("3", "Dinner");
 
             toast.AddActionItem(input);
 
-            toast.AddActionItem(new ToastAction("Reserve", "reserve") { ActivationType = ActivationType.Foreground });
-            toast.AddActionItem(new ToastAction("Call Restaurant", "call") { ActivationType = ActivationType.Foreground });
+            toast.AddActionItem(new ToastAction("Reserve", "reserve")
+            {
+                ActivationType = ActivationType.Foreground
+            });
+            toast.AddActionItem(new ToastAction("Call Restaurant", "call")
+            {
+                ActivationType = ActivationType.Foreground
+            });
 
             var notification = toast.GetNotification();
 
