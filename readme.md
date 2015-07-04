@@ -2,6 +2,9 @@
 
 Interactive Toast Extensions is a project to more easily allow a developer to create the xml required for interactive toasts in Windows 10.
 
+## Nuget
+Coming soon...
+
 ## What are Interactive Toasts?
 Information on what they are can be found in this awesome blog post [http://blogs.msdn.com/b/tiles_and_toasts/archive/2015/07/02/adaptive-and-interactive-toast-notifications-for-windows-10.aspx](http://blogs.msdn.com/b/tiles_and_toasts/archive/2015/07/02/adaptive-and-interactive-toast-notifications-for-windows-10.aspx)
 
