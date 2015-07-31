@@ -116,7 +116,9 @@
   <ItemGroup>
     <Compile Include="InteractiveToast.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="Properties\InteractiveToastExtensions.rd.xml" />
+    <Content Include="Properties\InteractiveToastExtensions.rd.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
