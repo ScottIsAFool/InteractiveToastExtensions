@@ -1,25 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>InteractiveToastExtensions</id>
-        <version>1.0.0</version>
-        <title />
+        <version>1.0.1</version>
         <authors>ScottIsAFool</authors>
-        <owners />
         <licenseUrl>https://raw.githubusercontent.com/ScottIsAFool/InteractiveToastExtensions/master/LICENSE</licenseUrl>
         <projectUrl>https://github.com/ScottIsAFool/InteractiveToastExtensions</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Helper library to more easily create the notification to display an interactive notification</description>
-        <releaseNotes/>
+        <releaseNotes />
         <copyright>© Scott Lovegrove 2015</copyright>
         <language>en-US</language>
         <tags>interactive Toast notification uwp</tags>
     </metadata>
     <files>
-      
-      <file src="InteractiveToastExtensions\bin\Release\InteractiveToastExtensions.dll" target="lib\uap10.0\InteractiveToastExtensions.dll" />
-      <file src="InteractiveToastExtensions\bin\Release\InteractiveToastExtensions.pdb" target="lib\uap10.0\InteractiveToastExtensions.pdb" />
-      <file src="InteractiveToastExtensions\bin\Release\InteractiveToastExtensions.pri" target="lib\uap10.0\InteractiveToastExtensions.pri" />
-      <file src="InteractiveToastExtensions\Properties\InteractiveToastExtensions.rd.xml" target="lib\uap10.0\InteractiveToastExtensions\Properties\InteractiveToastExtensions.rd.xml" />      
+        <file src="InteractiveToastExtensions\Properties\InteractiveToastExtensions.rd.xml" target="lib\uap10.0\InteractiveToastExtensions\Properties\InteractiveToastExtensions.rd.xml" />
+        <file src="InteractiveToastExtensions\bin\Release\InteractiveToastExtensions.dll" target="lib\uap10.0\InteractiveToastExtensions.dll" />
+        <file src="InteractiveToastExtensions\bin\Release\InteractiveToastExtensions.pdb" target="lib\uap10.0\InteractiveToastExtensions.pdb" />
+        <file src="InteractiveToastExtensions\bin\Release\InteractiveToastExtensions.pri" target="lib\uap10.0\InteractiveToastExtensions.pri" />
     </files>
 </package>
