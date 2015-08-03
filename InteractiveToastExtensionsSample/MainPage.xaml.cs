@@ -19,6 +19,26 @@ namespace InteractiveToastExtensionsSample
 
         private void UIElement_OnTapped(object sender, TappedRoutedEventArgs e)
         {
+            var notification = NielsNotification();
+
+            ToastNotificationManager.CreateToastNotifier().Show(notification);
+        }
+
+        private static ToastNotification NielsNotification()
+        {
+            var alert = new InteractiveToast {Scenario = Scenario.Reminder};
+
+            var visual = new Visual();
+            visual.AddText(new Text("Adam's hiking camp"));
+            visual.AddText(new Text("You have an upcoming event"));
+            alert.SetVisual(visual);
+
+            var notification = alert.GetNotification();
+            return notification;
+        }
+
+        private static ToastNotification DeadpoolNotification()
+        {
             var toast = new InteractiveToast();
             var visual = new Visual();
             visual.AddText(new Text("Spicy Heaven"));
@@ -50,8 +70,7 @@ namespace InteractiveToastExtensionsSample
             });
 
             var notification = toast.GetNotification();
-
-            ToastNotificationManager.CreateToastNotifier().Show(notification);
+            return notification;
         }
     }
 }

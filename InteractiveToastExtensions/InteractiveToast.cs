@@ -93,7 +93,7 @@ namespace InteractiveToastExtensions
 
             if (Scenario.HasValue)
             {
-                sb.Append($" launch=\"{Scenario.Value}\"");
+                sb.Append($" scenario=\"{Scenario.Value.ToString().ToLower()}\"");
             }
 
             if (!string.IsNullOrEmpty(People))
