@@ -552,7 +552,8 @@ namespace InteractiveToastExtensions
     {
         Foreground,
         Background,
-        Protocol
+        Protocol,
+        System
     }
 
     public enum Scenario
