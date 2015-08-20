@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>InteractiveToastExtensions</id>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
         <authors>ScottIsAFool</authors>
         <licenseUrl>https://raw.githubusercontent.com/ScottIsAFool/InteractiveToastExtensions/master/LICENSE</licenseUrl>
         <projectUrl>https://github.com/ScottIsAFool/InteractiveToastExtensions</projectUrl>

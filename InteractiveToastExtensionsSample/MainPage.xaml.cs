@@ -31,6 +31,7 @@ namespace InteractiveToastExtensionsSample
             var visual = new Visual();
             visual.AddText(new Text("Adam's hiking camp"));
             visual.AddText(new Text("You have an upcoming event"));
+            visual.AddImage(new VisualImage("ms-appx:///Assets/Deadpool.png") {ImagePlacement = ImagePlacement.Inline});
             alert.SetVisual(visual);
 
             var notification = alert.GetNotification();
