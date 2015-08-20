@@ -5,6 +5,7 @@
 *
 */
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -135,6 +136,15 @@ namespace InteractiveToastExtensions
             doc.LoadXml(xml);
 
             return new ToastNotification(doc);
+        }
+
+        public ScheduledToastNotification GetScheduledNotification(DateTimeOffset dateTime)
+        {
+            var doc = new XmlDocument();
+            var xml = GetXml();
+            doc.LoadXml(xml);
+
+            return new ScheduledToastNotification(doc, dateTime);
         }
     }
 
